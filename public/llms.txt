@@ -1,0 +1,11 @@
+# Zelda
+
+> Browser SNES player. The cartridge stays on the visitor's device.
+
+This site does not host, mirror, or link to a game ROM.
+You choose a .sfc file in the browser. Saves stay in that browser.
+
+Controls: keyboard, standard gamepad, and on-screen buttons for mouse and touch.
+
+Canonical: https://zelda.jonbailey.xyz/
+Version: 1.0.0

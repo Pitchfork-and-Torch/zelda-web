@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Zelda | A Link to the Past</title>
+  <meta name="description" content="Play a SNES cartridge in the browser with a controller, keyboard, mouse, or touch. The file stays on your device. This site does not host it.">
+  <meta name="theme-color" content="#0e1110">
+  <meta name="color-scheme" content="dark">
+  <meta name="author" content="Jon Bailey / @suddenlyjon">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="canonical" href="https://zelda.jonbailey.xyz/">
+  <link rel="alternate" type="text/plain" href="https://zelda.jonbailey.xyz/llms.txt" title="llms.txt">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://zelda.jonbailey.xyz/">
+  <meta property="og:site_name" content="Zelda">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Zelda - A Link to the Past">
+  <meta property="og:description" content="SNES in the browser. Keyboard, controller, mouse, or touch. The cartridge stays on your device.">
+  <meta property="og:image" content="https://zelda.jonbailey.xyz/og.jpg?v=1.0.0">
+  <meta property="og:image:secure_url" content="https://zelda.jonbailey.xyz/og.jpg?v=1.0.0">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Dark card reading Zelda, A Link to the Past, cartridge stays on your device">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@suddenlyjon">
+  <meta name="twitter:creator" content="@suddenlyjon">
+  <meta name="twitter:title" content="Zelda - A Link to the Past">
+  <meta name="twitter:description" content="SNES in the browser. Keyboard, controller, mouse, or touch. The cartridge stays on your device.">
+  <meta name="twitter:image" content="https://zelda.jonbailey.xyz/og.jpg?v=1.0.0">
+  <meta name="twitter:image:alt" content="Dark card reading Zelda, A Link to the Past, cartridge stays on your device">
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/icon-180.png" sizes="180x180">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="preload" href="/fonts/ClashDisplay-Semibold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/Satoshi-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/fonts/fonts.css">
+  <link rel="stylesheet" href="/styles.css?v=1.0.0">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "Zelda",
+        "url": "https://zelda.jonbailey.xyz/",
+        "applicationCategory": "GameApplication",
+        "operatingSystem": "Any",
+        "browserRequirements": "Requires JavaScript. You supply the SNES cartridge file.",
+        "softwareVersion": "1.0.0",
+        "description": "Browser SNES player for a cartridge you already have. Controller, keyboard, mouse, and touch. The file stays in the browser.",
+        "image": "https://zelda.jonbailey.xyz/og.jpg?v=1.0.0",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "creator": { "@type": "Person", "name": "suddenlyjon", "url": "https://x.com/suddenlyjon" }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Does this site host the game?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. You choose a cartridge file on your device. The site never receives it."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Which controls work?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Keyboard, a standard controller, and on-screen buttons for mouse and touch."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip" href="#gate">Skip to cartridge</a>
+  <main id="gate">
+    <div class="wrap">
+      <h1>Zelda</h1>
+      <p class="sub">A Link to the Past</p>
+      <p class="note">SNES player. Choose the cartridge on this device. It stays in this browser. This site does not keep a copy.</p>
+
+      <div class="row">
+        <button type="button" class="primary" id="continue" hidden>Continue</button>
+        <button type="button" class="ghost" id="forget" hidden>Remove from this browser</button>
+      </div>
+      <p class="file-name" id="file-name"></p>
+
+      <label class="drop" id="drop">
+        <input id="file" type="file" accept=".sfc,.smc,.fig,.swc,.zip,.7z">
+        <span>Drop a .sfc here, or click to choose.<br>On a phone, pick the file from Files or Downloads.</span>
+      </label>
+
+      <label class="check">
+        <input id="onscreen" type="checkbox" checked>
+        <span>On-screen buttons for mouse and touch</span>
+      </label>
+
+      <p id="status" role="status"></p>
+      <p class="fine" id="pads"></p>
+
+      <details>
+        <summary>Keyboard and controller</summary>
+        <table>
+          <thead>
+            <tr><th>Action</th><th>Key</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Move</td><td><kbd>Arrows</kbd></td></tr>
+            <tr><td>B, sword</td><td><kbd>Z</kbd></td></tr>
+            <tr><td>A, item</td><td><kbd>X</kbd></td></tr>
+            <tr><td>Y</td><td><kbd>A</kbd></td></tr>
+            <tr><td>X</td><td><kbd>S</kbd></td></tr>
+            <tr><td>L</td><td><kbd>Q</kbd></td></tr>
+            <tr><td>R</td><td><kbd>E</kbd></td></tr>
+            <tr><td>Start</td><td><kbd>Enter</kbd></td></tr>
+            <tr><td>Select</td><td><kbd>V</kbd></td></tr>
+          </tbody>
+        </table>
+        <p class="fine">A standard controller maps on its own. Open the controller icon in the game bar to change a key or a button. On-screen buttons take mouse clicks and touch. In-game saves stay in this browser. Wait a few seconds after you save before closing the tab.</p>
+      </details>
+
+      <p class="foot">Player shell by Jon Bailey. Emulation by <a href="https://emulatorjs.org/">EmulatorJS</a> with the snes9x core. No cartridge is stored on this server.</p>
+    </div>
+  </main>
+  <div id="stage" hidden>
+    <div id="game"></div>
+  </div>
+  <script src="/player.js?v=1.0.0"></script>
+  <script defer src="https://hits.jonbailey.xyz/c.js" data-site="zelda"></script>
+</body>
+</html>

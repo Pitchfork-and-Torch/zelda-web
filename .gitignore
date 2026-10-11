@@ -1,0 +1,9 @@
+*.sfc
+*.smc
+*.fig
+*.swc
+*.gd3
+*.gd7
+*.bsx
+.wrangler/
+node_modules/
